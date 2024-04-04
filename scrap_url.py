@@ -18,7 +18,7 @@ def get_json(id):
     return(x.json())
 def get_top_100(url):
     ids = []
-    for i in range(0,20,20):
+    for i in range(0,100,20):
         ids += get_ids(url+str(i))
     return(ids)
 def get_token(x):
