@@ -1,7 +1,10 @@
 # SWUDB-deck-analyzer
 ## About
 Python script used for analyzing Star Wars Unlimited decks build by other players and shared on https://swudb.com/ with cards that you own. 
-
+## Installation
+You need to have python interpreter installed on you OS. Before running the script, you need to install requests module:\
+```pip install requests```\
+Next, the script should work without anny issues.
 ## Usage
 Script can be used with database on swudb.com (option ```--mode online```) or with local database in csv file (option ```--mode local```). 
 #### Online:
