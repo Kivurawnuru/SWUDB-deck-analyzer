@@ -145,15 +145,18 @@ if(args.mode=='online'):
     owned = import_own_cards(owned_cards)
 if(args.compare):
     cards = compare_single_deck(owned,args.url)
-    print("Number, Cost, Name, Type, Rarity, Missing")
-    for card in cards:
-        # If needed, we can add other fields from list below
-        #{'card': {'Set': 'SOR', 'Number': '230', 'Name': 'General Veers', 'Subtitle': 'Blizzard Force Commander', 'Type': 'Unit', 'Aspects': ['Villainy'], 'Traits': ['IMPERIAL', 'OFFICIAL'], 'Arenas': ['Ground'], 'Cost': '3', 'Power': '3', 'HP': '3', 'FrontText': 'Other friendly IMPERIAL units get +1/+1.', 'DoubleSided': False, 'Rarity': 'Uncommon', 'Unique': True, 'Artist': 'Steve Morris', 'FrontArt': 'https://d3alac64utt23z.cloudfront.net/images/cards/SOR/230.png', 'VariantType': 'Normal', 'MarketPrice': '0.21'}, 'missing': 1}
-        try:
-            print("{}, {}, {}, {}, {}, Missing: {}".format(cards[card]['card']["Number"], cards[card]['card']["Cost"], cards[card]['card']["Name"], cards[card]['card']["Type"], cards[card]['card']['Rarity'],cards[card]["missing"]))
-        except: 
-            print("{}, {}, {}, {}, {}, Missing: {}".format(cards[card]['card']["Number"], "N/A", cards[card]['card']["Name"], cards[card]['card']["Type"], cards[card]['card']['Rarity'],cards[card]["missing"]))
-
+    if(cards):
+        print(cards)
+        print("Number, Cost, Name, Type, Rarity, Missing")
+        for card in cards:
+            # If needed, we can add other fields from list below
+            #{'card': {'Set': 'SOR', 'Number': '230', 'Name': 'General Veers', 'Subtitle': 'Blizzard Force Commander', 'Type': 'Unit', 'Aspects': ['Villainy'], 'Traits': ['IMPERIAL', 'OFFICIAL'], 'Arenas': ['Ground'], 'Cost': '3', 'Power': '3', 'HP': '3', 'FrontText': 'Other friendly IMPERIAL units get +1/+1.', 'DoubleSided': False, 'Rarity': 'Uncommon', 'Unique': True, 'Artist': 'Steve Morris', 'FrontArt': 'https://d3alac64utt23z.cloudfront.net/images/cards/SOR/230.png', 'VariantType': 'Normal', 'MarketPrice': '0.21'}, 'missing': 1}
+            try:
+                print("{}, {}, {}, {}, {}, Missing: {}".format(cards[card]['card']["Number"], cards[card]['card']["Cost"], cards[card]['card']["Name"], cards[card]['card']["Type"], cards[card]['card']['Rarity'],cards[card]["missing"]))
+            except: 
+                print("{}, {}, {}, {}, {}, Missing: {}".format(cards[card]['card']["Number"], "N/A", cards[card]['card']["Name"], cards[card]['card']["Type"], cards[card]['card']['Rarity'],cards[card]["missing"]))
+    else:
+        print("No missing cards")
 if(args.top):
     url = "https://swudb.com/decks/hot?Skip="
     ids = scrap_url.get_top_100(url)
